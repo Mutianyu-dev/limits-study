@@ -1,0 +1,23 @@
+# 依赖与构建产物
+node_modules/
+dist/
+build/
+
+# 本地数据（答题记录、收藏）
+data/*.db
+data/*.db-shm
+data/*.db-wal
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 日志与临时文件
+*.log
+*.tmp
+dump.txt
+
+# 截图（需要展示时再单独挑几张）
+shots/

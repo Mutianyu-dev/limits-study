@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>方法 · 极限研习</title>
+<script>
+  try {
+    var q = new URLSearchParams(location.search).get('theme');
+    var s = JSON.parse(localStorage.getItem('limits.settings.v1') || '{}');
+    var t = (q === 'dark' || q === 'light') ? q : s.theme;
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+</script>
+<link rel="stylesheet" href="/assets/app.css?v=4" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="apple-touch-icon" href="/assets/favicon-180.png" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/main"><b>极限研习</b><span>Methods</span></a>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="切换深浅色"><span data-theme-icon></span></button>
+      <a class="text-link" href="/main">三径</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <a class="crumb" href="/main">← 返 回 三 径</a>
+
+    <div class="page-head" id="head">
+      <div class="kicker">Methods · Essence</div>
+      <h1 id="title">方法 · 破的</h1>
+      <div class="en" id="en">Methods · Essence</div>
+      <p class="lead" id="lead">正在取用内容……</p>
+      <div class="meta-row" id="meta"></div>
+    </div>
+
+    <nav class="filters" id="methodNav" aria-label="方法索引"></nav>
+
+    <div id="sections"></div>
+  </main>
+
+  <script src="/assets/math.js?v=4"></script>
+  <script src="/assets/core.js?v=4"></script>
+  <script src="/assets/method.js?v=4"></script>
+</body>
+</html>

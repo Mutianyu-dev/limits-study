@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>题库 · 渊薮 · 极限研习</title>
+<script>
+  try {
+    var q = new URLSearchParams(location.search).get('theme');
+    var s = JSON.parse(localStorage.getItem('limits.settings.v1') || '{}');
+    var t = (q === 'dark' || q === 'light') ? q : s.theme;
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+</script>
+<link rel="stylesheet" href="/assets/app.css?v=4" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="apple-touch-icon" href="/assets/favicon-180.png" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/main"><b>极限研习</b><span>Practice</span></a>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="切换深浅色"><span data-theme-icon></span></button>
+      <a class="text-link" href="/wrongbook">错题本</a>
+      <a class="text-link" href="/main">三径</a>
+    </div>
+  </header>
+
+  <main class="practice-wrap">
+    <div class="page-head" style="padding-bottom:20px">
+      <div class="kicker">Practice · Immersion</div>
+      <h1>题库 <i>·</i> 渊薮</h1>
+      <div class="en">Question Bank · Repository</div>
+    </div>
+
+    <div class="filters" id="typeFilters" role="group" aria-label="题型筛选"></div>
+
+    <div class="progress-line">
+      <span id="progressText">— / —</span>
+      <div class="bar"><i id="bar" style="width:0%"></i></div>
+      <span id="scoreText">正确 0</span>
+    </div>
+
+    <section class="qcard" id="qcard" aria-live="polite">
+      <div class="empty">
+        <div class="big">正在取题</div>
+        <p>题库 · 渊薮</p>
+      </div>
+    </section>
+
+    <p class="hint" style="margin-top:22px">
+      快捷键：A / B / C / D 选择　·　Enter 提交或进入下一题
+    </p>
+  </main>
+
+  <script src="/assets/math.js?v=4"></script>
+  <script src="/assets/core.js?v=4"></script>
+  <script src="/assets/practice.js?v=4"></script>
+</body>
+</html>

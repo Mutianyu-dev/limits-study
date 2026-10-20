@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>极限研习 · Limits</title>
+<meta name="description" content="高数极限在线研习：四步循环、七大未定式、方法失效条件与题库。" />
+<script>
+  try {
+    var q = new URLSearchParams(location.search).get('theme');
+    var s = JSON.parse(localStorage.getItem('limits.settings.v1') || '{}');
+    var t = (q === 'dark' || q === 'light') ? q : s.theme;
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+</script>
+<link rel="stylesheet" href="/assets/app.css?v=4" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="apple-touch-icon" href="/assets/favicon-180.png" />
+</head>
+<body class="splash-page">
+  <div class="splash" id="splash">
+    <div class="orbit" id="orbit" aria-label="极限研习，八个关键词">
+      <div class="ring ring--a" aria-hidden="true"></div>
+      <div class="ring ring--b" aria-hidden="true"></div>
+      <div class="ring ring--c" aria-hidden="true"></div>
+
+      <button class="mark" id="mark" type="button" aria-label="进入极限研习主界面">
+        <span class="mark-inner">
+          <b>Math</b>
+          <em>LIMITS</em>
+        </span>
+      </button>
+    </div>
+    <p class="splash-hint">Click to enter · 点击进入</p>
+  </div>
+
+  <script src="/assets/math.js?v=4"></script>
+  <script src="/assets/core.js?v=4"></script>
+  <script src="/assets/splash.js?v=4"></script>
+</body>
+</html>

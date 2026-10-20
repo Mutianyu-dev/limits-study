@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="/assets/app.css" />
+</head>
+<body>
+<h1 style="font:14px system-ui">measure</h1>
+<div id="box" style="font-size:40px;margin:40px">
+  <span class="mt" id="whole">
+    <span class="mt-scripts" id="scripts">
+      <span class="mt-sbase" id="base"><i class="mt-i" id="it">e</i></span>
+      <sup class="mt-sup" id="sup">2</sup>
+    </span>
+  </span>
+</div>
+<pre id="out" style="font:13px monospace"></pre>
+<script>
+  function rect(el) {
+    const r = el.getBoundingClientRect();
+    return { l: +r.left.toFixed(2), r: +r.right.toFixed(2), t: +r.top.toFixed(2), b: +r.bottom.toFixed(2), w: +r.width.toFixed(2) };
+  }
+  const ids = ['whole', 'scripts', 'base', 'it', 'sup'];
+  const data = {};
+  ids.forEach((id) => { data[id] = rect(document.getElementById(id)); });
+  const it = document.getElementById('it');
+  const sup = document.getElementById('sup');
+  data.italicWidthViaRange = (() => {
+    const range = document.createRange();
+    range.selectNodeContents(it);
+    const r = range.getBoundingClientRect();
+    return { w: +r.width.toFixed(2) };
+  })();
+  data.supStyle = getComputedStyle(sup).verticalAlign + ' / ' + getComputedStyle(sup).fontSize + ' / ' + getComputedStyle(sup).transform;
+  data.gap = +(sup.getBoundingClientRect().left - base.getBoundingClientRect().right).toFixed(2);
+  document.getElementById('out').textContent = JSON.stringify(data, null, 2);
+</script>
+</body>
+</html>

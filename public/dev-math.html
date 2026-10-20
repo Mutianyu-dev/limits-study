@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>公式渲染体检 · 极限研习</title>
+<script>
+  try {
+    var q = new URLSearchParams(location.search).get('theme');
+    if (q === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+</script>
+<link rel="stylesheet" href="/assets/app.css" />
+<style>
+  .demo { width: min(900px, calc(100% - 48px)); margin: 0 auto; padding: 30px 0 80px; }
+  .demo h2 { font-family: var(--serif); font-weight: 500; font-size: 16px; letter-spacing: .12em; margin: 28px 0 8px; }
+  .row { padding: 10px 0; border-bottom: 1px dashed var(--line); }
+  .row .note { font-size: 10px; color: var(--ink-3); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 6px; }
+  .eqline { text-align: center; font-size: 19px; }
+  .inline-demo { font-size: 14px; line-height: 2.4; }
+</style>
+</head>
+<body>
+<div class="demo">
+  <h1 style="font-family:var(--serif);font-weight:500;letter-spacing:.2em">公式渲染体检</h1>
+  <p style="font-size:12px;color:var(--ink-3)">/dev-math.html · 用于逐条核对 MathTex 子集的排版效果</p>
+  <div id="rows"></div>
+
+  <h2>行内公式</h2>
+  <p class="inline-demo" id="inline"></p>
+</div>
+
+<script src="/assets/math.js"></script>
+<script src="/assets/core.js"></script>
+<script>
+  const CASES = [
+    ['基础极限', '\\lim_{x\\to 0}\\frac{\\sin x}{x}=1'],
+    ['差式', '\\lim_{x\\to 0}\\frac{\\tan x-\\sin x}{x^{3}}=\\frac{1}{2}'],
+    ['根式', '\\frac{\\sqrt{1+x}-1}{x}=\\frac{1}{\\sqrt{1+x}+1}'],
+    ['积分', '\\int_{0}^{x}\\sin t^{2}\\,dt'],
+    ['求和', '\\sum_{k=1}^{n}\\frac{1}{n+k}'],
+    ['幂指', '\\lim_{x\\to 0}(1+2x)^{1/x}=e^{2}'],
+    ['嵌套指数', 'e^{-\\frac{1}{6}}'],
+    ['指数含分式', '\\lim_{x\\to 0}(1+x)^{\\frac{1}{x}}'],
+    ['指数含分式二', 'x^{\\frac{1}{x^{2}}}'],
+    ['括号与分式', '\\left(\\frac{a}{b}\\right)^{2}'],
+    ['希腊字母', '\\alpha^{2}+\\beta\\xi\\theta\\Delta\\varphi'],
+    ['无穷小', '1-\\cos x\\sim\\frac{x^{2}}{2}'],
+    ['箭头关系', 'x\\to\\infty\\;\\Rightarrow\\;\\frac{0}{0}'],
+    ['绝对值', '\\frac{|x|}{x}'],
+    ['大算子', '\\prod_{i=1}^{n}a_{i},\\qquad \\limsup_{n\\to\\infty}x_{n}'],
+    ['下标组', 'x_{n+1}=\\sqrt{2+x_{n}}'],
+  ];
+  const rows = document.getElementById('rows');
+  for (const [label, tex] of CASES) {
+    const row = document.createElement('div');
+    row.className = 'row';
+    row.innerHTML = '<div class="note">' + label + '</div><div class="eqline"><span class="mt">' +
+      MathTex.render(tex) + '</span></div>';
+    rows.appendChild(row);
+  }
+  document.getElementById('inline').innerHTML =
+    '当 <span class="mt mt--inline">' + MathTex.render('x\\to 0') + '</span> 时，' +
+    '<span class="mt mt--inline">' + MathTex.render('1-\\cos x\\sim\\frac{x^{2}}{2}') + '</span>，' +
+    '所以 <span class="mt mt--inline">' + MathTex.render('\\lim_{x\\to 0}\\frac{1-\\cos x}{x^{2}}=\\frac{1}{2}') + '</span>。';
+
+  if (new URLSearchParams(location.search).has('measure')) {
+    const out = [];
+    document.querySelectorAll('.eqline').forEach((line, i) => {
+      const box = line.getBoundingClientRect();
+      const mt = line.querySelector('.mt').getBoundingClientRect();
+      out.push(`#${i} row:${(box.left + box.width / 2).toFixed(1)} mt:${(mt.left + mt.width / 2).toFixed(1)} off:${((mt.left + mt.width / 2) - (box.left + box.width / 2)).toFixed(1)}`);
+    });
+    const pre = document.createElement('pre');
+    pre.style.cssText =
+      'font:12px monospace;white-space:pre-wrap;padding:10px;position:fixed;top:0;left:0;z-index:9999;background:#111;color:#7f7';
+    pre.textContent = out.join('\n');
+    document.body.appendChild(pre);
+  }
+</script>
+</body>
+</html>

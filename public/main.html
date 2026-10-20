@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>极限 · 三径 · 极限研习</title>
+<script>
+  try {
+    var q = new URLSearchParams(location.search).get('theme');
+    var s = JSON.parse(localStorage.getItem('limits.settings.v1') || '{}');
+    var t = (q === 'dark' || q === 'light') ? q : s.theme;
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+</script>
+<link rel="stylesheet" href="/assets/app.css?v=4" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="apple-touch-icon" href="/assets/favicon-180.png" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <b>极限研习</b>
+      <span>Limits · Study</span>
+    </a>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="切换深浅色"><span data-theme-icon></span></button>
+      <a class="text-link" href="/">起始页</a>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div class="main-head rise">
+      <div class="eyebrow">Threefold</div>
+      <h1>极限 · 三径</h1>
+      <p>刷题以涵泳　·　方法以破的　·　设置以设彀</p>
+    </div>
+
+    <div class="modules">
+      <!-- 01 刷题 -->
+      <section class="card rise" style="animation-delay: .06s">
+        <div class="card-index">01</div>
+        <div class="card-head">
+          <div class="cn">刷题 <i>·</i> 涵泳</div>
+          <div class="en">Practice · Immersion</div>
+        </div>
+        <div class="card-body">
+          <div class="card-list">
+            <a class="entry" href="/wrongbook">
+              <span class="cn">收藏错题 <i>·</i> 折戟</span>
+              <span class="en">Favorites &amp; Errors · Review</span>
+            </a>
+            <a class="entry" href="/practice">
+              <span class="cn">题库 <i>·</i> 渊薮</span>
+              <span class="en">Question Bank · Repository</span>
+            </a>
+          </div>
+          <p class="hint">每型五十题 · 逐题解析<br />错题自动归档，收藏随手钉住</p>
+          <div class="card-foot">
+            <div><b id="statAnswered">0</b><span>Answered</span></div>
+            <div><b id="statAccuracy">—</b><span>Accuracy</span></div>
+            <div><b id="statErrors">0</b><span>Errors</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 方法 -->
+      <section class="card rise" style="animation-delay: .12s">
+        <div class="card-index">02</div>
+        <div class="card-head">
+          <div class="cn">方法 <i>·</i> 破的</div>
+          <div class="en">Methods · Essence</div>
+        </div>
+        <div class="card-body">
+          <div class="card-list" id="methodList">
+            <a class="entry" href="/method/flow">
+              <span class="cn">总流程 <i>·</i> 纲举目张</span>
+              <span class="en">General Flow · Framework</span>
+            </a>
+            <a class="entry" href="/method/types">
+              <span class="cn">题型分类 <i>·</i> 辨章流别</span>
+              <span class="en">Type Classification · Categories</span>
+            </a>
+            <a class="entry" href="/method/advanced">
+              <span class="cn">进阶细节方法 <i>·</i> 探赜索隐</span>
+              <span class="en">Advanced Techniques · Details</span>
+            </a>
+            <a class="entry" href="/method/rules">
+              <span class="cn">核心方法与失效 <i>·</i> 逾淮为枳</span>
+              <span class="en">Rules &amp; Limitations · Boundaries</span>
+            </a>
+            <a class="entry" href="/method/examples">
+              <span class="cn">例题 <i>·</i> 发凡起例</span>
+              <span class="en">Examples · Demonstration</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 设置 -->
+      <section class="card rise" style="animation-delay: .18s">
+        <div class="card-index">03</div>
+        <div class="card-head">
+          <div class="cn">设置 <i>·</i> 设彀</div>
+          <div class="en">Settings · Preferences</div>
+        </div>
+        <div class="card-body">
+          <div class="settings-group">
+            <div class="settings-label">
+              <span class="cn">深浅颜色模式</span>
+              <span class="en">Light / Dark</span>
+            </div>
+            <div class="seg" id="themeSeg" role="group" aria-label="深浅颜色模式">
+              <button type="button" data-theme-opt="light" aria-pressed="true">浅色模式</button>
+              <button type="button" data-theme-opt="dark" aria-pressed="false">深色模式</button>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <div class="settings-label">
+              <span class="cn">奖励模式</span>
+              <span class="en">Reward Mode</span>
+            </div>
+
+            <div class="settings-label" style="margin-top:2px">
+              <span class="cn" style="font-size:12px">奖励频率</span>
+              <span class="en">Frequency</span>
+            </div>
+            <div class="seg" id="freqSeg" role="group" aria-label="奖励频率">
+              <button type="button" data-freq="1" aria-pressed="false">连对一题</button>
+              <button type="button" data-freq="3" aria-pressed="true">连对三题</button>
+              <button type="button" data-freq="5" aria-pressed="false">连对五题</button>
+            </div>
+
+            <div class="settings-label" style="margin-top:16px">
+              <span class="cn" style="font-size:12px">奖励设置</span>
+              <span class="en">Reward Tier</span>
+            </div>
+            <div class="seg" id="tierSeg" role="group" aria-label="奖励等级">
+              <button type="button" data-tier="companion" aria-pressed="true">小爱同学</button>
+              <button type="button" data-tier="instructor" aria-pressed="false">教员</button>
+            </div>
+
+            <p class="hint">等级决定诗句：大爱仙尊 / 教员；频率决定连对几题触发。</p>
+            <div style="text-align:center;margin-top:12px">
+              <button class="btn btn--ghost" id="tryReward" type="button">试听一次奖励</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="/assets/math.js?v=4"></script>
+  <script src="/assets/core.js?v=4"></script>
+  <script src="/assets/main.js?v=4"></script>
+</body>
+</html>

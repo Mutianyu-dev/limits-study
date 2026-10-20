@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>收藏错题 · 折戟 · 极限研习</title>
+<script>
+  try {
+    var q = new URLSearchParams(location.search).get('theme');
+    var s = JSON.parse(localStorage.getItem('limits.settings.v1') || '{}');
+    var t = (q === 'dark' || q === 'light') ? q : s.theme;
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+</script>
+<link rel="stylesheet" href="/assets/app.css?v=4" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="apple-touch-icon" href="/assets/favicon-180.png" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/main"><b>极限研习</b><span>Review</span></a>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="切换深浅色"><span data-theme-icon></span></button>
+      <a class="text-link" href="/practice">题库</a>
+      <a class="text-link" href="/main">三径</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <a class="crumb" href="/main">← 返 回 三 径</a>
+
+    <div class="page-head">
+      <div class="kicker">Past Errors · Second Pass</div>
+      <h1>收藏错题 <i>·</i> 折戟</h1>
+      <div class="en">Favorites &amp; Errors · Review</div>
+      <p class="lead">错题自动落进来；收藏是你亲手钉住的钉子。折戟之处，正是要重新磨的地方。</p>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button type="button" id="tabErrors" role="tab" aria-selected="true">错 题</button>
+      <button type="button" id="tabFavs" role="tab" aria-selected="false">收 藏</button>
+    </div>
+
+    <div class="stats-row" id="stats"></div>
+
+    <div class="wb-list" id="list"></div>
+  </main>
+
+  <script src="/assets/math.js?v=4"></script>
+  <script src="/assets/core.js?v=4"></script>
+  <script src="/assets/wrongbook.js?v=4"></script>
+</body>
+</html>

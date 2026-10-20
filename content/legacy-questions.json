@@ -1,0 +1,722 @@
+{
+  "types": [
+    { "key": "concept", "label": "概念与连续", "en": "Concept" },
+    { "key": "form00", "label": "0/0 型", "en": "0/0" },
+    { "key": "forminf", "label": "∞/∞ 型", "en": "∞/∞" },
+    { "key": "form0inf", "label": "0·∞ 型", "en": "0·∞" },
+    { "key": "formdiff", "label": "∞−∞ 型", "en": "∞−∞" },
+    { "key": "formpower", "label": "幂指型", "en": "Power" },
+    { "key": "sequence", "label": "数列极限", "en": "Sequence" },
+    { "key": "method", "label": "方法条件", "en": "Conditions" },
+    { "key": "compare", "label": "无穷小比较", "en": "Comparison" },
+    { "key": "midvalue", "label": "中值定理", "en": "MVT" },
+    { "key": "integral", "label": "变限积分", "en": "Integral" }
+  ],
+  "difficulties": [
+    { "key": "easy", "label": "基础", "en": "Easy" },
+    { "key": "medium", "label": "进阶", "en": "Medium" },
+    { "key": "hard", "label": "挑战", "en": "Hard" }
+  ],
+  "questions": [
+    {
+      "id": "q001",
+      "type": "concept",
+      "difficulty": "easy",
+      "stem": "极限 $\\lim_{x\\to 0}\\sin(1/x)$ 的结果是？",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$1$" },
+        { "key": "C", "text": "不存在" },
+        { "key": "D", "text": "$\\infty$" }
+      ],
+      "answer": "C",
+      "explanation": "取 $x_n=\\frac{1}{n\\pi}$，得 $\\sin\\frac{1}{x_n}=0$；取 $x_n=\\frac{1}{2n\\pi+\\frac{\\pi}{2}}$，得 $\\sin\\frac{1}{x_n}=1$。两条子列极限不同，由归结原则，原极限不存在。"
+    },
+    {
+      "id": "q002",
+      "type": "concept",
+      "difficulty": "easy",
+      "stem": "函数 $f(x)=\\dfrac{\\sin x}{x}$ 在 $x=0$ 处属于？",
+      "options": [
+        { "key": "A", "text": "连续点" },
+        { "key": "B", "text": "可去间断点" },
+        { "key": "C", "text": "跳跃间断点" },
+        { "key": "D", "text": "无穷间断点" }
+      ],
+      "answer": "B",
+      "explanation": "$\\lim_{x\\to 0}\\frac{\\sin x}{x}=1$ 存在，但 $f(0)$ 无定义。补上 $f(0)=1$ 即可连续，故为可去间断点。"
+    },
+    {
+      "id": "q003",
+      "type": "concept",
+      "difficulty": "easy",
+      "stem": "$\\lim_{x\\to 0}(1+x)^{1/x}=$",
+      "options": [
+        { "key": "A", "text": "$1$" },
+        { "key": "B", "text": "$e$" },
+        { "key": "C", "text": "$e^{2}$" },
+        { "key": "D", "text": "$\\infty$" }
+      ],
+      "answer": "B",
+      "explanation": "这是第二个重要极限的标准形式，属于 $1^{\\infty}$ 型，值为 $e$。"
+    },
+    {
+      "id": "q004",
+      "type": "concept",
+      "difficulty": "medium",
+      "stem": "设 $\\lim f(x)=A$，$\\lim g(x)=B$，要使 $\\lim\\dfrac{f(x)}{g(x)}=\\dfrac{A}{B}$ 成立，还需补充的条件是？",
+      "options": [
+        { "key": "A", "text": "$A\\neq 0$" },
+        { "key": "B", "text": "$B\\neq 0$" },
+        { "key": "C", "text": "$B=0$" },
+        { "key": "D", "text": "$A=B$" }
+      ],
+      "answer": "B",
+      "explanation": "商的极限法则要求分母的极限不为零。若 $B=0$，需要另行判断是 $\\frac{0}{0}$、$\\frac{A}{0}$ 还是不存在。"
+    },
+    {
+      "id": "q005",
+      "type": "form00",
+      "difficulty": "easy",
+      "stem": "$\\lim_{x\\to 0}\\dfrac{\\sin 3x}{x}=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$\\frac{1}{3}$" },
+        { "key": "C", "text": "$3$" },
+        { "key": "D", "text": "$9$" }
+      ],
+      "answer": "C",
+      "explanation": "由 $\\sin 3x\\sim 3x$，或写成 $3\\cdot\\frac{\\sin 3x}{3x}$，极限为 $3$。"
+    },
+    {
+      "id": "q006",
+      "type": "form00",
+      "difficulty": "easy",
+      "stem": "$\\lim_{x\\to 0}\\dfrac{1-\\cos x}{x^{2}}=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$\\frac{1}{2}$" },
+        { "key": "C", "text": "$1$" },
+        { "key": "D", "text": "$2$" }
+      ],
+      "answer": "B",
+      "explanation": "由 $1-\\cos x\\sim\\frac{x^{2}}{2}$ 直接得 $\\frac{1}{2}$。"
+    },
+    {
+      "id": "q007",
+      "type": "form00",
+      "difficulty": "medium",
+      "stem": "$\\lim_{x\\to 0}\\dfrac{\\sqrt{1+x}-1}{x}=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$\\frac{1}{2}$" },
+        { "key": "C", "text": "$1$" },
+        { "key": "D", "text": "$2$" }
+      ],
+      "answer": "B",
+      "explanation": "有理化：分子分母同乘 $\\sqrt{1+x}+1$，得 $\\frac{1}{\\sqrt{1+x}+1}\\to\\frac{1}{2}$；也可用 $\\sqrt{1+x}-1\\sim\\frac{x}{2}$。"
+    },
+    {
+      "id": "q008",
+      "type": "form00",
+      "difficulty": "medium",
+      "stem": "$\\lim_{x\\to 0}\\dfrac{x-\\sin x}{x^{3}}=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$\\frac{1}{6}$" },
+        { "key": "C", "text": "$\\frac{1}{3}$" },
+        { "key": "D", "text": "$1$" }
+      ],
+      "answer": "B",
+      "explanation": "$\\sin x=x-\\frac{x^{3}}{6}+o(x^{3})$，故 $x-\\sin x=\\frac{x^{3}}{6}+o(x^{3})$，极限为 $\\frac{1}{6}$。"
+    },
+    {
+      "id": "q009",
+      "type": "form00",
+      "difficulty": "medium",
+      "stem": "$\\lim_{x\\to 0}\\dfrac{\\tan x-\\sin x}{x^{3}}=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$\\frac{1}{6}$" },
+        { "key": "C", "text": "$\\frac{1}{2}$" },
+        { "key": "D", "text": "$1$" }
+      ],
+      "answer": "C",
+      "explanation": "不能把 $\\tan x$、$\\sin x$ 各自换成 $x$（会得 $0$）。展开：$\\tan x=x+\\frac{x^{3}}{3}$，$\\sin x=x-\\frac{x^{3}}{6}$，差为 $\\frac{x^{3}}{2}$，极限 $\\frac{1}{2}$。"
+    },
+    {
+      "id": "q010",
+      "type": "form00",
+      "difficulty": "hard",
+      "stem": "$\\lim_{x\\to 0}\\dfrac{e^{x}-1-x}{x^{2}}=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$\\frac{1}{2}$" },
+        { "key": "C", "text": "$1$" },
+        { "key": "D", "text": "$e$" }
+      ],
+      "answer": "B",
+      "explanation": "$e^{x}=1+x+\\frac{x^{2}}{2}+o(x^{2})$，故分子 $=\\frac{x^{2}}{2}+o(x^{2})$，极限 $\\frac{1}{2}$。"
+    },
+    {
+      "id": "q011",
+      "type": "form00",
+      "difficulty": "hard",
+      "stem": "$\\lim_{x\\to 0}\\dfrac{\\ln(1+x)-x}{x^{2}}=$",
+      "options": [
+        { "key": "A", "text": "$-\\frac{1}{2}$" },
+        { "key": "B", "text": "$0$" },
+        { "key": "C", "text": "$\\frac{1}{2}$" },
+        { "key": "D", "text": "$1$" }
+      ],
+      "answer": "A",
+      "explanation": "$\\ln(1+x)=x-\\frac{x^{2}}{2}+o(x^{2})$，故分子 $=-\\frac{x^{2}}{2}+o(x^{2})$，极限 $-\\frac{1}{2}$。"
+    },
+    {
+      "id": "q012",
+      "type": "forminf",
+      "difficulty": "easy",
+      "stem": "$\\lim_{x\\to\\infty}\\dfrac{3x^{2}+2x}{2x^{2}-1}=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$\\frac{3}{2}$" },
+        { "key": "C", "text": "$2$" },
+        { "key": "D", "text": "$\\infty$" }
+      ],
+      "answer": "B",
+      "explanation": "同次多项式之比等于最高次项系数之比：$\\frac{3}{2}$。"
+    },
+    {
+      "id": "q013",
+      "type": "forminf",
+      "difficulty": "easy",
+      "stem": "$\\lim_{x\\to\\infty}\\dfrac{x^{3}+2x}{x^{2}+1}=$",
+      "options": [
+        { "key": "A", "text": "$1$" },
+        { "key": "B", "text": "$2$" },
+        { "key": "C", "text": "$\\infty$" },
+        { "key": "D", "text": "$0$" }
+      ],
+      "answer": "C",
+      "explanation": "分子次数高于分母，同除 $x^{2}$ 后分子含 $x$ 项，故趋于 $\\infty$。"
+    },
+    {
+      "id": "q014",
+      "type": "forminf",
+      "difficulty": "medium",
+      "stem": "$\\lim_{x\\to\\infty}\\dfrac{2x+\\sin x}{x}=$",
+      "options": [
+        { "key": "A", "text": "$1$" },
+        { "key": "B", "text": "$2$" },
+        { "key": "C", "text": "$3$" },
+        { "key": "D", "text": "不存在" }
+      ],
+      "answer": "B",
+      "explanation": "$\\frac{2x+\\sin x}{x}=2+\\frac{\\sin x}{x}$，而 $\\frac{\\sin x}{x}\\to 0$，故极限为 $2$。注意：直接洛必达会得到 $2+\\cos x$，无极限。"
+    },
+    {
+      "id": "q015",
+      "type": "forminf",
+      "difficulty": "medium",
+      "stem": "$\\lim_{x\\to\\infty}\\dfrac{x}{e^{x}}=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$1$" },
+        { "key": "C", "text": "$e$" },
+        { "key": "D", "text": "$\\infty$" }
+      ],
+      "answer": "A",
+      "explanation": "指数增长快于多项式，洛必达一次即得 $\\frac{1}{e^{x}}\\to 0$。"
+    },
+    {
+      "id": "q016",
+      "type": "form0inf",
+      "difficulty": "easy",
+      "stem": "$\\lim_{x\\to 0^{+}}x\\ln x=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$-1$" },
+        { "key": "C", "text": "$-\\infty$" },
+        { "key": "D", "text": "不存在" }
+      ],
+      "answer": "A",
+      "explanation": "写成 $\\frac{\\ln x}{\\frac{1}{x}}$，洛必达得 $-x\\to 0$。"
+    },
+    {
+      "id": "q017",
+      "type": "form0inf",
+      "difficulty": "medium",
+      "stem": "$\\lim_{x\\to 0^{+}}x^{2}\\ln x=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$-\\frac{1}{2}$" },
+        { "key": "C", "text": "$-\\infty$" },
+        { "key": "D", "text": "$1$" }
+      ],
+      "answer": "A",
+      "explanation": "$\\frac{\\ln x}{\\frac{1}{x^{2}}}$ 用洛必达得 $-\\frac{x^{2}}{2}\\to 0$。"
+    },
+    {
+      "id": "q018",
+      "type": "form0inf",
+      "difficulty": "medium",
+      "stem": "$\\lim_{x\\to 0^{+}}x\\ln(\\sin x)=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$1$" },
+        { "key": "C", "text": "$-\\infty$" },
+        { "key": "D", "text": "不存在" }
+      ],
+      "answer": "A",
+      "explanation": "$\\ln(\\sin x)=\\ln x+\\ln\\frac{\\sin x}{x}$，其中 $\\ln\\frac{\\sin x}{x}\\to 0$，而 $x\\ln x\\to 0$，故整体趋于 $0$。"
+    },
+    {
+      "id": "q019",
+      "type": "formdiff",
+      "difficulty": "easy",
+      "stem": "$\\lim_{x\\to 0}\\left(\\dfrac{1}{x}-\\dfrac{1}{e^{x}-1}\\right)=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$\\frac{1}{2}$" },
+        { "key": "C", "text": "$1$" },
+        { "key": "D", "text": "$\\infty$" }
+      ],
+      "answer": "B",
+      "explanation": "通分得 $\\frac{e^{x}-1-x}{x(e^{x}-1)}$；分母 $\\sim x^{2}$，分子 $\\sim\\frac{x^{2}}{2}$，极限 $\\frac{1}{2}$。"
+    },
+    {
+      "id": "q020",
+      "type": "formdiff",
+      "difficulty": "medium",
+      "stem": "$\\lim_{x\\to\\infty}\\left(\\sqrt{x^{2}+x}-x\\right)=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$\\frac{1}{2}$" },
+        { "key": "C", "text": "$1$" },
+        { "key": "D", "text": "$\\infty$" }
+      ],
+      "answer": "B",
+      "explanation": "有理化得 $\\frac{x}{\\sqrt{x^{2}+x}+x}\\to\\frac{1}{2}$。"
+    },
+    {
+      "id": "q021",
+      "type": "formdiff",
+      "difficulty": "hard",
+      "stem": "$\\lim_{x\\to 0}\\left(\\dfrac{1}{x^{2}}-\\dfrac{1}{\\sin^{2}x}\\right)=$",
+      "options": [
+        { "key": "A", "text": "$-\\frac{1}{3}$" },
+        { "key": "B", "text": "$-1$" },
+        { "key": "C", "text": "$0$" },
+        { "key": "D", "text": "$\\frac{1}{3}$" }
+      ],
+      "answer": "A",
+      "explanation": "通分：$\\frac{\\sin^{2}x-x^{2}}{x^{2}\\sin^{2}x}$。$\\sin x=x-\\frac{x^{3}}{6}+o(x^{3})$，$\\sin^{2}x=x^{2}-\\frac{x^{4}}{3}+o(x^{4})$，分子 $\\sim-\\frac{x^{4}}{3}$，分母 $\\sim x^{4}$，极限 $-\\frac{1}{3}$。"
+    },
+    {
+      "id": "q022",
+      "type": "formpower",
+      "difficulty": "easy",
+      "stem": "$\\lim_{x\\to 0}(1+2x)^{1/x}=$",
+      "options": [
+        { "key": "A", "text": "$e$" },
+        { "key": "B", "text": "$e^{2}$" },
+        { "key": "C", "text": "$2$" },
+        { "key": "D", "text": "$1$" }
+      ],
+      "answer": "B",
+      "explanation": "$1^{\\infty}$ 型，$e^{\\lim v(u-1)}=e^{(1/x)\\cdot 2x}=e^{2}$。"
+    },
+    {
+      "id": "q023",
+      "type": "formpower",
+      "difficulty": "easy",
+      "stem": "$\\lim_{n\\to\\infty}\\left(1+\\dfrac{1}{n}\\right)^{n}=$",
+      "options": [
+        { "key": "A", "text": "$1$" },
+        { "key": "B", "text": "$e$" },
+        { "key": "C", "text": "$e^{2}$" },
+        { "key": "D", "text": "$\\infty$" }
+      ],
+      "answer": "B",
+      "explanation": "第二个重要极限。用公式：$v(u-1)=n\\cdot\\frac{1}{n}=1$，故为 $e$。"
+    },
+    {
+      "id": "q024",
+      "type": "formpower",
+      "difficulty": "medium",
+      "stem": "$\\lim_{x\\to\\infty}x^{1/x}=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$1$" },
+        { "key": "C", "text": "$e$" },
+        { "key": "D", "text": "$\\infty$" }
+      ],
+      "answer": "B",
+      "explanation": "$\\infty^{0}$ 型，取对数得 $\\frac{\\ln x}{x}\\to 0$，故原式 $=e^{0}=1$。"
+    },
+    {
+      "id": "q025",
+      "type": "formpower",
+      "difficulty": "hard",
+      "stem": "$\\lim_{x\\to 0}\\left(\\dfrac{\\sin x}{x}\\right)^{1/x^{2}}=$",
+      "options": [
+        { "key": "A", "text": "$e^{-1/6}$" },
+        { "key": "B", "text": "$e^{-1/2}$" },
+        { "key": "C", "text": "$e^{1/6}$" },
+        { "key": "D", "text": "$1$" }
+      ],
+      "answer": "A",
+      "explanation": "$1^{\\infty}$ 型。$u-1=\\frac{\\sin x-x}{x}\\sim-\\frac{x^{2}}{6}$，乘 $\\frac{1}{x^{2}}$ 得 $-\\frac{1}{6}$，故为 $e^{-1/6}$。"
+    },
+    {
+      "id": "q026",
+      "type": "formpower",
+      "difficulty": "hard",
+      "stem": "$\\lim_{x\\to 0^{+}}x^{x}=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$1$" },
+        { "key": "C", "text": "$e$" },
+        { "key": "D", "text": "不存在" }
+      ],
+      "answer": "B",
+      "explanation": "$0^{0}$ 型，取对数得 $x\\ln x\\to 0$，故原式 $=e^{0}=1$。"
+    },
+    {
+      "id": "q027",
+      "type": "sequence",
+      "difficulty": "easy",
+      "stem": "$\\lim_{n\\to\\infty}\\left(1+\\dfrac{1}{2n}\\right)^{n}=$",
+      "options": [
+        { "key": "A", "text": "$e$" },
+        { "key": "B", "text": "$\\sqrt{e}$" },
+        { "key": "C", "text": "$e^{2}$" },
+        { "key": "D", "text": "$1$" }
+      ],
+      "answer": "B",
+      "explanation": "$v(u-1)=n\\cdot\\frac{1}{2n}=\\frac{1}{2}$，故为 $e^{1/2}=\\sqrt{e}$。"
+    },
+    {
+      "id": "q028",
+      "type": "sequence",
+      "difficulty": "medium",
+      "stem": "$\\lim_{n\\to\\infty}\\dfrac{1+2+\\cdots+n}{n^{2}}=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$\\frac{1}{2}$" },
+        { "key": "C", "text": "$1$" },
+        { "key": "D", "text": "$2$" }
+      ],
+      "answer": "B",
+      "explanation": "分子 $=\\frac{n(n+1)}{2}$，除以 $n^{2}$ 得 $\\frac{1+\\frac{1}{n}}{2}\\to\\frac{1}{2}$。"
+    },
+    {
+      "id": "q029",
+      "type": "sequence",
+      "difficulty": "medium",
+      "stem": "$\\lim_{n\\to\\infty}\\dfrac{1+\\frac{1}{2}+\\cdots+\\frac{1}{n}}{\\ln n}=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$1$" },
+        { "key": "C", "text": "$e$" },
+        { "key": "D", "text": "$\\infty$" }
+      ],
+      "answer": "B",
+      "explanation": "施托尔茨：$\\frac{\\frac{1}{n+1}}{\\ln(n+1)-\\ln n}=\\frac{1}{(n+1)\\ln(1+\\frac{1}{n})}\\to 1$（用 $\\ln(1+t)\\sim t$）。"
+    },
+    {
+      "id": "q030",
+      "type": "sequence",
+      "difficulty": "hard",
+      "stem": "$\\lim_{n\\to\\infty}\\left(\\dfrac{1}{n+1}+\\dfrac{1}{n+2}+\\cdots+\\dfrac{1}{n+n}\\right)=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$\\ln 2$" },
+        { "key": "C", "text": "$1$" },
+        { "key": "D", "text": "$2$" }
+      ],
+      "answer": "B",
+      "explanation": "写成 $\\frac{1}{n}\\sum\\frac{1}{1+\\frac{k}{n}}$，是 $\\int_{0}^{1}\\frac{dx}{1+x}=\\ln 2$ 的黎曼和。"
+    },
+    {
+      "id": "q031",
+      "type": "method",
+      "difficulty": "easy",
+      "stem": "下列哪一项不是洛必达法则的前提？",
+      "options": [
+        { "key": "A", "text": "属于 $\\frac{0}{0}$ 或 $\\frac{\\infty}{\\infty}$ 型" },
+        { "key": "B", "text": "去心邻域内 $f$、$g$ 可导" },
+        { "key": "C", "text": "$g'(x)\\neq 0$" },
+        { "key": "D", "text": "$f$、$g$ 在 $x_0$ 处连续" }
+      ],
+      "answer": "D",
+      "explanation": "洛必达只要求去心邻域可导、$g'\\neq 0$、导数之比的极限存在，并不要求 $f$、$g$ 在 $x_0$ 处连续或在该点有定义。"
+    },
+    {
+      "id": "q032",
+      "type": "method",
+      "difficulty": "medium",
+      "stem": "对 $\\lim_{x\\to 0}\\dfrac{x^{2}\\sin\\frac{1}{x}}{x}$，正确的说法是？",
+      "options": [
+        { "key": "A", "text": "洛必达得极限 $0$" },
+        { "key": "B", "text": "洛必达失效，但极限为 $0$" },
+        { "key": "C", "text": "洛必达失效，且极限不存在" },
+        { "key": "D", "text": "极限为 $1$" }
+      ],
+      "answer": "B",
+      "explanation": "原式 $=x\\sin\\frac{1}{x}\\to 0$（有界量乘无穷小）。但求导后为 $2x\\sin\\frac{1}{x}-\\cos\\frac{1}{x}$，振荡无极限，故洛必达的前提不满足。"
+    },
+    {
+      "id": "q033",
+      "type": "method",
+      "difficulty": "medium",
+      "stem": "等价无穷小替换在下列哪种结构中直接使用会失效？",
+      "options": [
+        { "key": "A", "text": "乘除因子" },
+        { "key": "B", "text": "加减项" },
+        { "key": "C", "text": "分母" },
+        { "key": "D", "text": "指数" }
+      ],
+      "answer": "B",
+      "explanation": "加减结构中两个主部可能相互抵消，替换会丢掉真正决定极限的高阶项，如 $\\frac{\\tan x-\\sin x}{x^{3}}$。"
+    },
+    {
+      "id": "q034",
+      "type": "method",
+      "difficulty": "hard",
+      "stem": "若 $\\lim\\dfrac{f'(x)}{g'(x)}$ 不存在，则 $\\lim\\dfrac{f(x)}{g(x)}$ 一定不存在。这句话？",
+      "options": [
+        { "key": "A", "text": "正确" },
+        { "key": "B", "text": "错误，原极限仍可能存在" },
+        { "key": "C", "text": "只在 $\\frac{0}{0}$ 型下正确" },
+        { "key": "D", "text": "无法判断" }
+      ],
+      "answer": "B",
+      "explanation": "洛必达是充分条件，不是必要条件。$\\frac{x^{2}\\sin\\frac{1}{x}}{x}\\to 0$，但导数之比不存在。"
+    },
+    {
+      "id": "q035",
+      "type": "compare",
+      "difficulty": "easy",
+      "stem": "当 $x\\to 0$ 时，$1-\\cos x$ 与 $\\dfrac{x^{2}}{2}$ 是？",
+      "options": [
+        { "key": "A", "text": "同阶但不等价" },
+        { "key": "B", "text": "等价无穷小" },
+        { "key": "C", "text": "前者是后者的高阶无穷小" },
+        { "key": "D", "text": "前者是后者的低阶无穷小" }
+      ],
+      "answer": "B",
+      "explanation": "$\\lim_{x\\to 0}\\frac{1-\\cos x}{\\frac{x^{2}}{2}}=1$，故等价。"
+    },
+    {
+      "id": "q036",
+      "type": "compare",
+      "difficulty": "medium",
+      "stem": "$x-\\sin x$ 是 $x$ 的几阶无穷小（$x\\to 0$）？",
+      "options": [
+        { "key": "A", "text": "一阶" },
+        { "key": "B", "text": "二阶" },
+        { "key": "C", "text": "三阶" },
+        { "key": "D", "text": "四阶" }
+      ],
+      "answer": "C",
+      "explanation": "$x-\\sin x\\sim\\frac{x^{3}}{6}$，故为三阶。"
+    },
+    {
+      "id": "q037",
+      "type": "compare",
+      "difficulty": "medium",
+      "stem": "当 $x\\to 0$ 时，下列无穷小中阶数最高的是？",
+      "options": [
+        { "key": "A", "text": "$x^{2}$" },
+        { "key": "B", "text": "$x^{3}$" },
+        { "key": "C", "text": "$\\sin x$" },
+        { "key": "D", "text": "$1-\\cos x$" }
+      ],
+      "answer": "B",
+      "explanation": "$x^{3}$ 是三阶；$1-\\cos x$ 是二阶；$\\sin x$ 与 $x^{2}$ 分别是一阶与二阶。阶数越高，趋于 $0$ 越快。"
+    },
+    {
+      "id": "q038",
+      "type": "midvalue",
+      "difficulty": "medium",
+      "stem": "拉格朗日中值定理成立的条件是？",
+      "options": [
+        { "key": "A", "text": "闭区间连续、开区间可导" },
+        { "key": "B", "text": "只需闭区间连续" },
+        { "key": "C", "text": "只需开区间可导" },
+        { "key": "D", "text": "需要二阶可导" }
+      ],
+      "answer": "A",
+      "explanation": "在 $[a,b]$ 上连续、在 $(a,b)$ 内可导，则存在 $\\xi\\in(a,b)$ 使 $f(b)-f(a)=f'(\\xi)(b-a)$。"
+    },
+    {
+      "id": "q039",
+      "type": "midvalue",
+      "difficulty": "hard",
+      "stem": "$\\lim_{n\\to\\infty}n^{2}\\left[\\arctan\\dfrac{1}{n}-\\arctan\\dfrac{1}{n+1}\\right]=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$\\frac{1}{2}$" },
+        { "key": "C", "text": "$1$" },
+        { "key": "D", "text": "$2$" }
+      ],
+      "answer": "C",
+      "explanation": "对 $\\arctan t$ 用中值定理：括号内 $=\\frac{1}{1+\\xi^{2}}\\cdot\\frac{1}{n(n+1)}$，乘 $n^{2}$ 得 $\\frac{n}{n+1}\\cdot\\frac{1}{1+\\xi^{2}}\\to 1$。"
+    },
+    {
+      "id": "q040",
+      "type": "integral",
+      "difficulty": "medium",
+      "stem": "$\\lim_{x\\to 0}\\dfrac{\\int_{0}^{x}\\sin t^{2}\\,dt}{x^{3}}=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$\\frac{1}{3}$" },
+        { "key": "C", "text": "$\\frac{1}{2}$" },
+        { "key": "D", "text": "$1$" }
+      ],
+      "answer": "B",
+      "explanation": "洛必达得 $\\frac{\\sin x^{2}}{3x^{2}}\\sim\\frac{x^{2}}{3x^{2}}=\\frac{1}{3}$。"
+    },
+    {
+      "id": "q041",
+      "type": "integral",
+      "difficulty": "medium",
+      "stem": "$\\dfrac{d}{dx}\\int_{0}^{x^{2}}e^{t}\\,dt=$",
+      "options": [
+        { "key": "A", "text": "$e^{x^{2}}$" },
+        { "key": "B", "text": "$2xe^{x^{2}}$" },
+        { "key": "C", "text": "$e^{2x}$" },
+        { "key": "D", "text": "$2xe^{2x}$" }
+      ],
+      "answer": "B",
+      "explanation": "由变上限积分求导公式，上限 $x^{2}$ 的导数为 $2x$，故结果为 $e^{x^{2}}\\cdot 2x$。"
+    },
+    {
+      "id": "q042",
+      "type": "concept",
+      "difficulty": "medium",
+      "stem": "关于数列极限与函数极限的关系，下列命题正确的是？",
+      "options": [
+        { "key": "A", "text": "若 $\\lim_{x\\to x_0}f(x)$ 存在，则任意满足 $x_n\\to x_0$ 的数列都有 $f(x_n)$ 收敛于同一值" },
+        { "key": "B", "text": "若两个子列的极限相同，则函数极限存在" },
+        { "key": "C", "text": "若右极限存在，则函数极限存在" },
+        { "key": "D", "text": "若 $|f(x)|$ 的极限存在，则 $f(x)$ 的极限存在" }
+      ],
+      "answer": "A",
+      "explanation": "这是归结原则（海涅定理）的正向表述。B、C、D 均不成立：子列要覆盖所有可能；左右极限需相等；$|f|$ 存在不能推出 $f$ 存在，如 $f(x)=\\frac{|x|}{x}$。"
+    },
+    {
+      "id": "q043",
+      "type": "form00",
+      "difficulty": "easy",
+      "stem": "$\\lim_{x\\to 0}\\dfrac{e^{2x}-1}{x}=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$1$" },
+        { "key": "C", "text": "$2$" },
+        { "key": "D", "text": "$e^{2}$" }
+      ],
+      "answer": "C",
+      "explanation": "$e^{2x}-1\\sim 2x$，故极限为 $2$。"
+    },
+    {
+      "id": "q044",
+      "type": "forminf",
+      "difficulty": "easy",
+      "stem": "$\\lim_{n\\to\\infty}\\dfrac{n^{2}+3n}{2n^{2}-n}=$",
+      "options": [
+        { "key": "A", "text": "$0$" },
+        { "key": "B", "text": "$\\frac{1}{2}$" },
+        { "key": "C", "text": "$2$" },
+        { "key": "D", "text": "$\\infty$" }
+      ],
+      "answer": "B",
+      "explanation": "同次多项式之比，系数之比为 $\\frac{1}{2}$。"
+    },
+    {
+      "id": "q045",
+      "type": "concept",
+      "difficulty": "easy",
+      "stem": "函数 $f$ 在 $x_0$ 处连续的充要条件是？",
+      "options": [
+        { "key": "A", "text": "左极限存在" },
+        { "key": "B", "text": "右极限存在" },
+        { "key": "C", "text": "极限存在且等于 $f(x_0)$" },
+        { "key": "D", "text": "在 $x_0$ 处可导" }
+      ],
+      "answer": "C",
+      "explanation": "连续的定义就是 $\\lim_{x\\to x_0}f(x)=f(x_0)$。可导必连续，但连续不一定可导。"
+    },
+    {
+      "id": "q046",
+      "type": "formpower",
+      "difficulty": "medium",
+      "stem": "$\\lim_{x\\to 0}(1-x)^{1/x}=$",
+      "options": [
+        { "key": "A", "text": "$e$" },
+        { "key": "B", "text": "$e^{-1}$" },
+        { "key": "C", "text": "$1$" },
+        { "key": "D", "text": "$0$" }
+      ],
+      "answer": "B",
+      "explanation": "$1^{\\infty}$ 型，$v(u-1)=\\frac{1}{x}\\cdot(-x)=-1$，故为 $e^{-1}$。"
+    },
+    {
+      "id": "q047",
+      "type": "method",
+      "difficulty": "medium",
+      "stem": "下列极限中，不能直接用洛必达法则的是？",
+      "options": [
+        { "key": "A", "text": "$\\lim_{x\\to 0}\\dfrac{\\sin x}{x}$" },
+        { "key": "B", "text": "$\\lim_{x\\to 0}\\dfrac{e^{x}-1}{x}$" },
+        { "key": "C", "text": "$\\lim_{x\\to 0}\\dfrac{1-\\cos x}{x^{2}}$" },
+        { "key": "D", "text": "$\\lim_{x\\to 0}\\dfrac{x^{2}\\sin\\frac{1}{x}}{x}$" }
+      ],
+      "answer": "D",
+      "explanation": "D 中导数之比的极限不存在，不满足洛必达的前提；原极限为 $0$，可用有界量乘无穷小直接得出。"
+    },
+    {
+      "id": "q048",
+      "type": "compare",
+      "difficulty": "medium",
+      "stem": "当 $x\\to 0$ 时，$\\sqrt{1+x}-1$ 与 $\\dfrac{x}{2}$ 的关系是？",
+      "options": [
+        { "key": "A", "text": "等价无穷小" },
+        { "key": "B", "text": "同阶但不等价" },
+        { "key": "C", "text": "高阶无穷小" },
+        { "key": "D", "text": "低阶无穷小" }
+      ],
+      "answer": "A",
+      "explanation": "$(1+x)^{1/2}-1\\sim\\frac{x}{2}$，两者等价。"
+    },
+    {
+      "id": "q049",
+      "type": "sequence",
+      "difficulty": "medium",
+      "stem": "若数列 $\\{x_n\\}$ 单调递增且有上界，则？",
+      "options": [
+        { "key": "A", "text": "一定发散" },
+        { "key": "B", "text": "一定收敛" },
+        { "key": "C", "text": "一定趋于 $\\infty$" },
+        { "key": "D", "text": "可能是周期数列" }
+      ],
+      "answer": "B",
+      "explanation": "单调有界准则：单调递增且有上界的数列必有极限。"
+    },
+    {
+      "id": "q050",
+      "type": "concept",
+      "difficulty": "medium",
+      "stem": "$\\lim_{x\\to 0}\\dfrac{|x|}{x}=$",
+      "options": [
+        { "key": "A", "text": "$1$" },
+        { "key": "B", "text": "$-1$" },
+        { "key": "C", "text": "不存在" },
+        { "key": "D", "text": "$0$" }
+      ],
+      "answer": "C",
+      "explanation": "左极限为 $-1$，右极限为 $1$，左右不相等，故极限不存在。"
+    }
+  ]
+}
