@@ -21,3 +21,8 @@ dump.txt
 
 # 截图（需要展示时再单独挑几张）
 shots/
+
+# 仅本机使用，不进入仓库
+PUBLISH.md
+launch.ps1
+打开网站.bat
